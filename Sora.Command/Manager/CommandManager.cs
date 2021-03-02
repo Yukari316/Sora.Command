@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using YukariToolBox.FormatLog;
@@ -117,9 +118,13 @@ namespace Sora.Command.Manager
                         // }
 
                         //创建实例
+                        //ver1
                         //var instance = classConstructor.Invoke(null);
-                        var instance = classType.Assembly.CreateInstance(classType.FullName);
-                        
+                        //ver2
+                        //var instance = classType.Assembly.CreateInstance(classType.FullName);
+                        //ver3
+                        var instance = FormatterServices.GetUninitializedObject(classType);
+
                         //在指令表中添加新的指令
                         command = new CommandInfo((commandAttr as Attribute.Command)?.Description,
                                                   matchExp,
