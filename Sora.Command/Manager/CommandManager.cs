@@ -1,14 +1,14 @@
+using Sora.Command.Attribute;
+using Sora.Command.Enumeration;
+using Sora.Enumeration.EventParamsType;
+using Sora.EventArgs.SoraEvent;
+using Sora.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Sora.Command.Attribute;
-using Sora.Command.Enumeration;
-using Sora.Enumeration.EventParamsType;
-using Sora.EventArgs.SoraEvent;
-using Sora.Server;
 using YukariToolBox.FormatLog;
 
 namespace Sora.Command.Manager
@@ -106,18 +106,20 @@ namespace Sora.Command.Manager
                         }
 
                         //获取所有的构造方法
-                        var classConstructors = classType.GetConstructors();
-                        //查找公共且没有参数的构造方法并执行
-                        var classConstructor = classConstructors
-                            .FirstOrDefault(method => method.IsPublic && method.GetParameters().Length == 0);
-                        if (classConstructor == null)
-                        {
-                            Log.Error("Command", $"can not create instance [{classType.FullName}]");
-                            continue;
-                        }
+                        // var classConstructors = classType.GetConstructors();
+                        // //查找公共且没有参数的构造方法并执行
+                        // var classConstructor = classConstructors
+                        //     .FirstOrDefault(method => method.IsPublic && method.GetParameters().Length == 0);
+                        // if (classConstructor == null)
+                        // {
+                        //     Log.Error("Command", $"can not create instance [{classType.FullName}]");
+                        //     continue;
+                        // }
 
                         //创建实例
-                        var instance = classConstructor.Invoke(null);
+                        //var instance = classConstructor.Invoke(null);
+                        var instance = classType.Assembly.CreateInstance(classType.FullName);
+                        
                         //在指令表中添加新的指令
                         command = new CommandInfo((commandAttr as Attribute.Command)?.Description,
                                                   matchExp,
