@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sora.Command</name>
+    </assembly>
+    <members>
+        <member name="T:Sora.Command.Attribute.Command">
+            <summary>
+            指令
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.Command.CommandExpression">
+            <summary>
+            指令表达式
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.Command.Description">
+            <summary>
+            指令描述
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.Command.MatchType">
+            <summary>
+            匹配类型
+            </summary>
+        </member>
+        <member name="M:Sora.Command.Attribute.Command.#ctor(System.String,Sora.Command.Enumeration.MatchType,System.String)">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="T:Sora.Command.Attribute.CommandGroup">
+            <summary>
+            指令组
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.CommandGroup.GroupName">
+            <summary>
+            指令组名
+            </summary>
+        </member>
+        <member name="M:Sora.Command.Attribute.CommandGroup.#ctor(System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="groupName">分组名</param>
+        </member>
+        <member name="T:Sora.Command.Attribute.CommandInfo">
+            <summary>
+            指令信息
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.CommandInfo.Desc">
+            <summary>
+            指令描述
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.CommandInfo.Regex">
+            <summary>
+            匹配指令的正则
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.CommandInfo.GroupName">
+            <summary>
+            指令组名
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.CommandInfo.MethodInfo">
+            <summary>
+            指令回调方法
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.CommandInfo.PermissonType">
+            <summary>
+            权限限制
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.CommandInfo.Instance">
+            <summary>
+            执行实例
+            </summary>
+        </member>
+        <member name="M:Sora.Command.Attribute.CommandInfo.#ctor(System.String,System.String,System.String,System.Reflection.MethodInfo,System.Nullable{Sora.Enumeration.EventParamsType.MemberRoleType},System.Object)">
+            <summary>
+            指令信息构造
+            </summary>
+        </member>
+        <member name="T:Sora.Command.Attribute.GroupCommand">
+            <summary>
+            群组指令
+            </summary>
+        </member>
+        <member name="P:Sora.Command.Attribute.GroupCommand.PermissionLevel">
+            <summary>
+            成员权限限制
+            </summary>
+        </member>
+        <member name="M:Sora.Command.Attribute.GroupCommand.#ctor(System.String,Sora.Enumeration.EventParamsType.MemberRoleType,Sora.Command.Enumeration.MatchType,System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="command">指令表达式</param>
+            <param name="permissionLevel">权限限制</param>
+            <param name="matchType">匹配类型</param>
+            <param name="desc">说明(在执行失败时可能会用到)</param>
+        </member>
+        <member name="T:Sora.Command.Attribute.PrivateCommand">
+            <summary>
+            私聊指令
+            </summary>
+        </member>
+        <member name="M:Sora.Command.Attribute.PrivateCommand.#ctor(System.String,Sora.Command.Enumeration.MatchType,System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="command">指令表达式</param>
+            <param name="matchType">匹配类型</param>
+            <param name="desc">说明(在执行失败时可能会用到)</param>
+        </member>
+        <member name="T:Sora.Command.Enumeration.MatchType">
+            <summary>
+            匹配类型
+            </summary>
+        </member>
+        <member name="F:Sora.Command.Enumeration.MatchType.Full">
+            <summary>
+            全字匹配
+            </summary>
+        </member>
+        <member name="F:Sora.Command.Enumeration.MatchType.Regex">
+            <summary>
+            正则
+            </summary>
+        </member>
+        <member name="T:Sora.Command.Manager.CommandManager">
+            <summary>
+            特性指令管理器
+            </summary>
+        </member>
+        <member name="M:Sora.Command.Manager.CommandManager.#ctor(Sora.Server.SoraWSServer)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="server">Sora服务端实例</param>
+        </member>
+        <member name="M:Sora.Command.Manager.CommandManager.MappingCommands(System.Reflection.Assembly)">
+            <summary>
+            自动注册所有指令
+            </summary>
+            <param name="assembly">包含指令的程序集</param>
+        </member>
+        <member name="M:Sora.Command.Manager.CommandManager.GroupCommandAdapter(System.String,Sora.EventArgs.SoraEvent.GroupMessageEventArgs)">
+            <summary>
+            处理聊天指令
+            </summary>
+            <param name="type">类型</param>
+            <param name="eventArgs">事件参数</param>
+        </member>
+        <member name="M:Sora.Command.Manager.CommandManager.PrivateCommandAdapter(System.String,Sora.EventArgs.SoraEvent.PrivateMessageEventArgs)">
+            <summary>
+            处理聊天指令
+            </summary>
+            <param name="type">类型</param>
+            <param name="eventArgs">事件参数</param>
+        </member>
+    </members>
+</doc>
